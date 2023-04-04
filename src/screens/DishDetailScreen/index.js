@@ -1,7 +1,8 @@
 import { React, useState } from 'react'
-import { Image, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable,  StyleSheet, Text, View } from 'react-native'
 import restaurants from '../../../assets/data/restaurants.json'
 import { AntDesign } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 
 
 export default function DishDetailScreen() {
@@ -9,24 +10,24 @@ export default function DishDetailScreen() {
 
   const [quantity, setQuantity] = useState(1)
   const [total, setTotal] = useState(0)
+  const navigation = useNavigation()
   
 
   const onMinus = ()=>{
      if(quantity >1) setQuantity(quantity - 1)
-     setTotal(quantity * dish.price)
+     let subtotal= dish.price * quantity
+     setTotal(subtotal.toFixed(2))
   }
 
   const onPlus = ()=>{
     setQuantity(quantity + 1)
+    let subtotal= dish.price * quantity
+    setTotal(subtotal.toFixed(2))
   }
 
- const getTotal = ()=>{
-  let subtotal= dish.price * quantity
-  return subtotal.toFixed(2)
- }
-
+ 
   return (
-    <SafeAreaView>
+   
       <View style={styles.page}>
       {dish.image && <Image source={{ uri:dish.image }} style={styles.image}/>}
         <Text style={styles.name}>{dish.name}</Text>
@@ -38,12 +39,14 @@ export default function DishDetailScreen() {
           <Text style={styles.quantity}>{quantity}</Text>
           <AntDesign name='pluscircle' size={40} color='black' onPress={onPlus}/>
         </View>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Cantidad:{' '}{quantity} {' items    '}
-          &#8226; {'     '} total : {getTotal()}{' $'}</Text>
-        </View>
+        <Text style={styles.info}>{' '}{quantity} {' items    '}
+          &#8226; {'     '} total : {total}{' $'}</Text>
+        <Pressable onPress={()=>navigation.navigate('Basket')} style={styles.button}>
+          <Text style={styles.buttonText}>Ordernar</Text>
+        </Pressable>
       </View>
-    </SafeAreaView>
+      
+   
   )
 }
 
@@ -51,21 +54,19 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     width: '100%',
-    paddingVertical: 30,
     padding: 10,
   },
   image: {
     width: '100%',
-    aspectRatio: '5/3',
-    marginBottom: 5,
-  },
+    aspectRatio: '5/2',
+   },
   name: {
-    fontSize: 20,
+    fontSize: 18,
+    marginVertical: 10,
   },
   description: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '600',
-    marginVertical: 10,
     color: 'grey',
   },
   price: {
@@ -74,16 +75,23 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: 'lightgrey',
-    marginVertical: 20,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop:30
   },
   quantity: {
     fontSize: 20,
     marginHorizontal: 30,
+  },
+  info:{
+    textAlign:'center',
+    marginTop:20,
+    fontWeight:'bold',
+    fontSize:16,
+    color:'grey',
   },
   button: {
     backgroundColor: '#c43535',

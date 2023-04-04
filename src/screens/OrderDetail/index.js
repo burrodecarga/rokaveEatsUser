@@ -2,7 +2,7 @@ import React from 'react'
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import restaurants from '../../../assets/data/restaurants.json'
 import orders from '../../../assets/data/orders.json'
-import styles from '../RestaurantDetailPage/styles'
+import styles from '../RestaurantDetailsScreen/styles'
 import BasketDishItem from '../../components/BaketDishItem'
 
 export default function OrderDetailHeader() {
@@ -12,17 +12,17 @@ export default function OrderDetailHeader() {
       <View style={[styles.page]}>
         <Image
           source={{ uri: order.Restaurant.image }}
-          style={styles.image}
+          style={style.image}
           resizeMode='cover'
         />
         <View style={style.bg}>
           <View style={styles.container}>
             <Text style={styles.title}>{order.Restaurant.name}</Text>
-            <Text style={styles.subtitle}>
+            {/* <Text style={styles.subtitle}>
               Envío {order.Restaurant.deliveryFee.toFixed(2)}$ {'  Tiempo: '}
               {order.Restaurant.minDeliveryTime}-
               {order.Restaurant.maxDeliveryTime} minutos
-            </Text>
+            </Text> */}
           </View>
           <Text style={style.menuTitle}>Detalles del Pedido</Text>
         </View>
@@ -65,4 +65,5 @@ const style = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#c5b4b4',
   },
+
 })

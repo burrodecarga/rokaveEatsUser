@@ -4,11 +4,17 @@ import DishListItem from '../../components/DishListItem'
 import Header from './Header'
 import { Ionicons } from "@expo/vector-icons";
 import styles from './styles'
+import { useNavigation, useRoute } from '@react-navigation/native';
 
+const restaurant = restaurants[0];
 
+const RestaurantDetailsPage = () =>{
 
-export default function RestaurantDetailPage() {
-  const restaurant = restaurants[0]
+  const route = useRoute()
+  const navigation = useNavigation()
+  const id = route.params?.id
+  //console.warn(id)
+  
   return (
     <View style={styles.page}>
       <FlatList
@@ -28,3 +34,4 @@ export default function RestaurantDetailPage() {
   )
 }
 
+export default RestaurantDetailsPage

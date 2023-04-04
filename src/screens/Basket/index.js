@@ -11,7 +11,6 @@ export default function Basket() {
   
 
   return (
-    <SafeAreaView>
       <View style={styles.page}>
       {restaurant.image && <Image source={ require('../../../assets/platos.jpg') } style={styles.image}/>}
         <Text style={styles.name}>{restaurant.name}</Text>
@@ -23,12 +22,12 @@ export default function Basket() {
         renderItem={({item}) =><BasketDishItem  basketDish={item}/>}
         />
        
-        <View style={styles.button}>
+        {/* <View style={styles.button}>
           <Text style={styles.buttonText}>Cantidad:{' '} {' items    '}
           &#8226; {'     '} total : {' $'}</Text>
-        </View>
+        </View> */}
       </View>
-    </SafeAreaView>
+  
   )
 }
 
@@ -41,8 +40,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height:'30%',
-    aspectRatio: '5/3',
+    height:'25%',
     marginBottom: 5,
   },
   name: {
