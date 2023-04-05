@@ -27,6 +27,7 @@ export default StyleSheet.create({
     marginVertical: 10,
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: "center",
   },
   subtitle: {
     textAlign: 'center',
