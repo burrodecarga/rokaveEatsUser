@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-rokave2ubereats-staging-193527-authRole",
+      "UnauthRoleArn": "arn:aws:iam::938870118540:role/amplify-rokave2ubereats-staging-193527-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::938870118540:role/amplify-rokave2ubereats-staging-193527-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-rokave2ubereats-staging-193527-deployment",
+      "UnauthRoleName": "amplify-rokave2ubereats-staging-193527-unauthRole",
+      "StackName": "amplify-rokave2ubereats-staging-193527",
+      "StackId": "arn:aws:cloudformation:us-east-2:938870118540:stack/amplify-rokave2ubereats-staging-193527/04f59f00-d3e9-11ed-802a-02cf71d6a9c2",
+      "AmplifyAppId": "d1otfjl0r6b68z"
+    },
+    "categories": {
+      "auth": {
+        "rokave2ubereats": {}
+      }
+    }
+  }
+}
