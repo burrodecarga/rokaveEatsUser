@@ -21,9 +21,14 @@ const RootNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        
       }}
     >
-      <Stack.Screen name='HomeTabs' component={HomeTabs} />
+      <Stack.Screen name='HomeTabs' component={HomeTabs}
+      screenOptions={{
+        headerShown: false,
+        TitleAlign:'center',
+      }} />
     </Stack.Navigator>
   )
 }
@@ -77,8 +82,11 @@ const HomeStack = createNativeStackNavigator()
 
 const HomeStackNavigator = () => {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name='Restaurants' component={HomeScreen} />
+    <HomeStack.Navigator
+    screenOptions={{ headerStyle: { marginHorizontal: 'center' } }}
+    >
+      <HomeStack.Screen name='Restaurantes' component={HomeScreen} 
+      />
       <HomeStack.Screen name='Restaurant' component={RestaurantDetailsScreen} />
       <HomeStack.Screen name='Dish' component={DishDetailScreen} />
       <HomeStack.Screen name='Basket' component={Basket} />
